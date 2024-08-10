@@ -1,0 +1,49 @@
+## java中的数据类型
+
+Java中数据类型分为两大类：基本类型和引用类型。相应的，变量也分这两种类型：基本类型和引用类型。
+
+基本类型的变量保存原始值，即它代表的值就是数据本身
+
+引用类型的变量保存的值是引用值，“引用值”指向内存空间的地址，代表了某个对象的引用，而不是对象本身，对象本身存放在这个引用值所表示的地址的位置。
+
+```java
+Case cc=new Case();
+
+Case cc;
+cc=new Case();
+```
+
+![截屏2024-05-28 14.53.30](/Users/mojie/Library/Application Support/typora-user-images/截屏2024-05-28 14.53.30.png)
+
+引用变量和基本类型的变量都是存储在栈中的。
+
+给引用变量赋值：
+
+```java
+Case cc; '''在栈内存里面开辟了空间给引用变量cc，这时cc=null'''
+cc=new Case();
+'''
+1. new Case()在堆内存里面开辟了空间给Case类的对象，这个对象没有名字
+2. Case()随即调用了Case类的构造函数
+3. 把对象的地址在堆内存的地址给引用变量cc
+'''
+
+```
+
+[java对象和引用变量](https://blog.csdn.net/weixin_35813749/article/details/52374749)
+
+### java中只有值传递
+
+[java中的参数传递](https://blog.csdn.net/yjclsx/article/details/81224352?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522171687850016800226526332%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=171687850016800226526332&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~hot_rank-3-81224352-null-null.142^v100^pc_search_result_base1&utm_term=java%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92&spm=1018.2226.3001.4187)
+
+1、对于基本类型参数，在方法体内对参数进行重新赋值，不会改变原有变量的值。
+
+2、对于引用类型参数，在方法体内对参数进行重新赋予引用，不会改变原有变量所持有的引用。
+
+3、方法体内对参数进行运算，不会改变原有变量的值。
+
+4、对于引用类型参数，方法体内对参数所指向对象的属性进行操作，将改变原有变量所指向对象的属性值。
+![截屏2024-05-28 15.00.24](/Users/mojie/Library/Application Support/typora-user-images/截屏2024-05-28 15.00.24.png)
+
+![截屏2024-05-28 15.01.00](/Users/mojie/Library/Application Support/typora-user-images/截屏2024-05-28 15.01.00.png)
+
