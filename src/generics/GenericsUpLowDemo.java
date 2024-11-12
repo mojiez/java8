@@ -95,12 +95,12 @@ public class GenericsUpLowDemo {
         }
         return sum;
     }
-    // 这样写有点不优雅， 上面的写法比较好
-    public static <T> double sum1(List<T> numbers) {
-        double sum = 0;
-        for (T number : numbers) {
-            sum += (double) number;
-        }
-        return sum;
-    }
+//    // 这样写有点不优雅， 上面的写法比较好
+//    public static <T> double sum1(List<T> numbers) {
+//        double sum = 0;
+//        for (T number : numbers) {
+//            sum += (double) number;
+//        }
+//        return sum;
+//    }
 }
