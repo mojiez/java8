@@ -14,6 +14,49 @@ import java.util.List;
  *     // Object？那么就失去了下界的意义
  *     // String？那么可能不兼容T的实际类型
  * }
+ *
+ * // 对于 T extends Number来说
+ * class Info2<T extends Number> {
+ *     private T var; // 擦除后T被替换为边界类型 Number
+ * }
+ *
+ * 对于 T 来说
+ * class Info2<T> {
+ *     private T var; // 擦除后T被替换为 Object
+ * }
+ *
+ *
+ */
+
+/*
+class Info2<T extends Number> {
+      private T var;
+  }
+
+Info2<String> info = new Info2();
+这里会发生什么?
+
+类型检查阶段：
+// 编译器检查所有泛型类型使用是否合法
+Info2<Integer> info1 = new Info2<>();    // 通过：Integer extends Number
+Info2<String> info2 = new Info2<>();     // 错误：String 不是 Number 的子类
+
+对于：
+class Info2<T extends Number> {
+      private T var;
+  }
+
+Info2<Double> info = new Info2();
+类型检查阶段：
+通过 因为Double extends Number
+
+泛型擦除阶段：
+// 擦除后的代码
+class Info2 {
+    private Number var;  // T 被替换为上界 Number
+}
+
+Info2 info = new Info2();
  */
 class Info1 <T extends Number> { //此泛型的上限是Number
     private T var;
@@ -57,7 +100,6 @@ public class GenericsUpLowDemo {
         // 可以接收Number 和 Number以下的
         Info1<Integer> info = new Info1<>();
         // Info1<String> info2 = new Info1<String>(); 这样写就是错的
-
 
     }
     /**
